@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+
+  db:
+    image: postgres:15
+    container_name: smartcity-db
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: smartcity
+    ports:
+      - "5433:5432"
+
+  api:
+    build: .
+    container_name: smartcity-api
+    restart: always
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://user:password@db:5432/smartcity
+    ports:
+      - "3000:3000"

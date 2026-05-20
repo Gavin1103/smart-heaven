@@ -1,0 +1,62 @@
+[package]
+name = "learning-group"
+version = "0.1.0"
+authors = ["Rocco Reus <rocco.reus@hva.nl>"]
+edition = "2021"
+resolver = "2"
+rust-version = "1.77"
+
+[[bin]]
+name = "learning-group"
+harness = false # use the built-in cargo test harness
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true    # Symbols are nice, and they don't increase the size on Flash
+opt-level = "z"
+
+[features]
+default = []
+hil = []
+hardware_tests = []
+
+experimental = ["esp-idf-svc/experimental"]
+
+[dependencies]
+log = "0.4"
+anyhow = "1.0"
+futures = "0.3"
+
+embassy-time = { version = "0.4", features = ["generic-queue-8"] }
+embassy-sync = "0.6"
+
+esp-idf-sys = { version = "0.36", features = ["binstart"] }
+esp-idf-svc = { version = "0.51", features = ["embassy-time-driver", "embassy-sync"] }
+esp-idf-hal = { version = "0.45", features = ["embassy-sync", "rmt-legacy"] }
+
+smart-leds = "0.4.0"
+ws2812-esp32-rmt-driver = "0.12"
+
+critical-section = { version = "1.1", features = ["std"], default-features = false }
+
+# --- Optional Embassy Integration ---
+# esp-idf-svc = { version = "0.51", features = ["critical-section", "embassy-time-driver", "embassy-sync"] }
+
+# If you enable embassy-time-driver, you MUST also add one of:
+
+# a) Standalone Embassy libs ( embassy-time, embassy-sync etc.) with a foreign async runtime:
+# embassy-time = { version = "0.4.0", features = ["generic-queue-8"] } # NOTE: any generic-queue variant will work
+
+# b) With embassy-executor:
+# embassy-executor = { version = "0.7", features = ["executor-thread", "arch-std"] }
+
+# NOTE: if you use embassy-time with embassy-executor you don't need the generic-queue-8 feature
+
+# --- Temporary workaround for embassy-executor < 0.8 ---
+# esp-idf-svc = { version = "0.51", features = ["embassy-time-driver", "embassy-sync"] }
+# critical-section = { version = "1.1", features = ["std"], default-features = false }
+
+[build-dependencies]
+embuild = { version = "0.33", features = ["espidf"] }

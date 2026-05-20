@@ -1,0 +1,10 @@
+.idea
+docs/Gavin/railway-barrier/video/
+
+/node_modules
+apps/web/.vscode/
+packages/shared-types/dist
+.env
+
+*.tsbuildinfo
+apps/embedded/smart_city_v2/.piodocs/assets/videos/

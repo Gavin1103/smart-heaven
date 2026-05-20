@@ -1,0 +1,14 @@
+title: Bridge
+nav:
+  - Overview: index.md
+  - Research: bridge_research.md
+  - Technical Specs: bridge_components_list.md
+  - Wiring & Power: bridge_wiring_and_power.md
+  - Architecture: bridge_architecture.md
+  - Firmware: bridge_firmware.md
+  - References: references.md
+  - Power Analysis: power_analysis.md
+  - Bridge Realise: bridge_realise.md
+  - Bridge Advise: bridge_advise.md
+  - Bridge Analysis: bridge_analysis.md
+  - Bridge Design: bridge_safety_and_timing_spec.md

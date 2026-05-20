@@ -1,0 +1,11 @@
+title: Features
+nav:
+  - Overview: index.md
+  - Smart traffic lights: traffic-lights.md
+  - Smart bridge: bridge
+  - Railway barrier: railway-barrier.md
+  - Smart parking: parking.md
+  - Busstop design: busstop_design.md
+  - Busstop advice: busstop_advice.md
+  - Busstop research: busstop_research.md
+  - Template: _template.md

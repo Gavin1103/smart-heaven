@@ -1,0 +1,19 @@
+stateDiagram-v2
+    [*] --> Idle
+
+    Idle --> Approaching: Sensor A detects train
+    Approaching --> Closing: Warning time passed
+    Closing --> Closed: Barrier fully closed
+    Closed --> Opening: Sensor B detects train passed
+    Opening --> Idle: Barrier fully open
+
+    Idle --> Closing: Manual override close
+    Closed --> Opening: Manual override open
+
+%%    Idle --> Error: System error
+%%    Approaching --> Error: System error
+%%    Closing --> Error: System error
+%%    Closed --> Error: System error
+%%    Opening --> Error: System error
+
+%%    Error --> Closed: Fail-safe position

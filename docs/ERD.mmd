@@ -1,0 +1,48 @@
+erDiagram
+    HARDWARE_TYPE {
+        int id PK
+        string key "RAILWAY_BARRIER | TRAFFIC_LIGHT | PARKING_SPOT"
+        string name "Traffic Light"
+        datetime created_at
+        datetime updated_at
+    }
+
+    DEVICE {
+        int id PK
+        string name "Traffic light east"
+        string code UK "TL 01-04"
+        string description "Main intersection traffic light"
+        int hardware_type_id FK
+        string location_name "Main street intersection"
+        string status "ONLINE | OFFLINE | MAINTENANCE | ERROR"
+        boolean active "true"
+        string api_key_hash "hashed_api_key_value"
+        datetime last_seen_at
+        datetime installed_at
+        datetime created_at
+        datetime updated_at
+    }
+
+    DEVICE_STATE {
+        int id PK
+        int device_id FK
+        string state "Example: OPEN | GREEN | RED | OCCUPIED (device specific)"
+        string status_message "Traffic flowing normally"
+        json data "{ duration: 30 }"
+        datetime created_at
+        datetime updated_at
+    }
+
+    LOG {
+        int id PK
+        int device_id FK
+        string level "INFO | WARNING | ERROR"
+        string event_type "STATE_CHANGED | SENSOR_ERROR | DEVICE_STARTED | HEARTBEAT"
+        string message "Traffic light switched from RED to GREEN"
+        json payload "{ previousState: 'RED', newState: 'GREEN' }"
+        datetime created_at
+    }
+
+    HARDWARE_TYPE ||--o{ DEVICE : contains
+    DEVICE ||--o{ LOG : writes
+    DEVICE ||--o| DEVICE_STATE : current_state

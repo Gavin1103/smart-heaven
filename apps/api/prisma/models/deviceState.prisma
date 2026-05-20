@@ -1,0 +1,14 @@
+model DeviceState {
+  id       Int    @id @default(autoincrement())
+  deviceId Int    @unique
+  device   Device @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+
+  state         String
+  statusMessage String?
+  data          Json?
+
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+
+  @@map("device_states")
+}

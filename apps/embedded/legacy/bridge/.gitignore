@@ -1,0 +1,11 @@
+/.vscode
+/.embuild
+/target
+
+# JetBrains IDE (RustRover/IntelliJ)
+.idea
+*.iml
+
+# OS noise
+.DS_Store
+Thumbs.db

@@ -1,0 +1,11 @@
+title: Systems
+nav:
+  - Overview: index.md
+  - Dashboard: dashboard.md
+  - Energy: energy.md
+  - IoT network: iot-network.md
+  - Embedded firmware: embedded-firmware.md
+  - Mobility: mobility.md
+  - Safety: safety.md
+  - database-options: database-research.md
+

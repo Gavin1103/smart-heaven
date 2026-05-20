@@ -1,0 +1,11 @@
+title: City of Smart Heaven
+nav:
+  - Home: index.md
+  - Vision: vision.md
+  - Process: process
+  - Layout: layout
+  - Build standards: build-standards
+  - Systems: systems
+  - Features: features
+  - Logs: logs
+  - Contributing: contributing.md

@@ -1,0 +1,7 @@
+title: Process
+collapse: true
+nav:
+  - Overview: index.md
+  - Definition of Ready: definition-of-ready.md
+  - Definition of Done: definition-of-done.md
+  - Roadmap: roadmap.md

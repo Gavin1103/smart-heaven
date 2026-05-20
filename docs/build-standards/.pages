@@ -1,0 +1,8 @@
+title: Build Standards
+nav:
+  - Overview: index.md
+  - 3D printing: 3d-printing.md
+  - Electronics standard: electronics-standard.md
+  - Software standard: software-standard.md
+  - District standard: tile-standard.md
+  - Embedded system components: embedded-components.md

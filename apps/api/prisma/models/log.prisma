@@ -1,0 +1,24 @@
+model Log {
+  id       Int    @id @default(autoincrement())
+  deviceId Int
+  device   Device @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+
+  level     LogLevel @default(INFO)
+  eventType String
+  message   String
+  payload   Json?
+
+  createdAt DateTime @default(now())
+
+  @@index([deviceId])
+  @@index([eventType])
+  @@index([level])
+  @@index([createdAt])
+  @@map("logs")
+}
+
+enum LogLevel {
+  INFO
+  WARNING
+  ERROR
+}

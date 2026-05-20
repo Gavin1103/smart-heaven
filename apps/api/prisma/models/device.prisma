@@ -1,0 +1,33 @@
+model Device {
+  id          Int     @id @default(autoincrement())
+  name        String
+  code        String  @unique
+  description String?
+
+  hardwareTypeId Int
+  hardwareType   HardwareType @relation(fields: [hardwareTypeId], references: [id])
+
+  locationName String?
+
+  apiKeyHash  String?
+
+  status      DeviceStatus @default(ONLINE)
+  lastSeenAt  DateTime?
+  installedAt DateTime?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  logs         Log[]
+  currentState DeviceState?
+
+  @@index([hardwareTypeId])
+  @@index([status])
+  @@map("devices")
+}
+
+enum DeviceStatus {
+  ONLINE
+  OFFLINE
+  MAINTENANCE
+  ERROR
+}

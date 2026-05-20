@@ -1,0 +1,15 @@
+services:
+  mkdocs:
+    image: python:3.11-slim
+    container_name: smart-heaven-mkdocs
+    working_dir: /site
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/site
+    command: >
+      sh -lc "
+        pip install --no-cache-dir -r requirements.txt &&
+        pip install --no-cache-dir -e ./mdocotion &&
+        mkdocs serve --dev-addr=0.0.0.0:8000
+      "
